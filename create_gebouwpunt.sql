@@ -9,7 +9,7 @@ CREATE TABLE gebouwpunt AS (
         hoogte,
         top10_id,
         viscode,
-        ST_Transform(shape, 3857) AS geom,
+        ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom,
         ARRAY[15] AS zoomlevel
     FROM fgdb_brt.gebouwpunt_10
 UNION
@@ -23,7 +23,7 @@ UNION
         hoogte,
         top10_id,
         viscode,
-        ST_Transform(shape, 3857) AS geom,
+        ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom,
         ARRAY[16,17,18,19] AS zoomlevel
     FROM fgdb_brt.gebouwpunt_11_14
 UNION
@@ -37,7 +37,7 @@ UNION
         hoogte,
         top10_id,
         viscode,
-        ST_Transform(shape, 3857) AS geom,
+        ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom,
         ARRAY[14] AS zoomlevel
     FROM fgdb_brt.gebouwpunt_9
 ORDER by zoomlevel

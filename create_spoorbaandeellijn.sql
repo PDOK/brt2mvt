@@ -9,7 +9,7 @@ CREATE TABLE spoorbaanlijn AS (
 		elektrificatie,
 		fysiek_voorkomen,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[12,13,14] AS zoomlevel 
 	FROM fgdb_brt.spoorbaandeellijn_6_8
 UNION
@@ -23,7 +23,7 @@ UNION
 		elektrificatie,
 		fysiek_voorkomen,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.spoorbaandeellijn_9_14
 ORDER BY zoomlevel

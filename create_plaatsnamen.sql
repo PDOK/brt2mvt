@@ -11,7 +11,7 @@ CREATE TABLE plaatsnamen AS (
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[5] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_0
 UNION
@@ -27,7 +27,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[6] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_1
 UNION
@@ -43,7 +43,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[7] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_2
 UNION
@@ -59,7 +59,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[8] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_3
 UNION
@@ -75,7 +75,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[9,10] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_4
 UNION
@@ -91,7 +91,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[11] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_5
 UNION
@@ -107,7 +107,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[12] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_6
 UNION
@@ -123,7 +123,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[13] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_7
 UNION
@@ -139,7 +139,7 @@ UNION
 		tdncode ,
 		naam ,
 		inwkl,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
 		ARRAY[14] AS zoomlevel 
 	FROM fgdb_brt.plaatsnamen_8
 ORDER BY zoomlevel

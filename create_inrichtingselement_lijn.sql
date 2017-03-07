@@ -9,7 +9,7 @@ CREATE TABLE inrichtingselementlijn AS (
 		friese_naam,
 		nummer,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[14,15,16] AS zoomlevel 
 	FROM fgdb_brt.inrichtingselementlijn_8
 UNION
@@ -23,7 +23,7 @@ UNION
 		friese_naam,
 		nummer,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.inrichtingselementlijn_9_14
 ORDER BY zoomlevel

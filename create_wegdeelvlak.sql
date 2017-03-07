@@ -24,7 +24,7 @@ CREATE TABLE wegdeelvlak AS(
 		brugnaam,
 		tunnelnaam,
 		viscode ,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
 		ARRAY[16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.wegdeelvlak_10_14 
 UNION
@@ -53,7 +53,7 @@ UNION
 		brugnaam,
 		tunnelnaam,
 		viscode ,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
 		ARRAY[13,14,15] AS zoomlevel 
 	FROM fgdb_brt.wegdeelvlak_7_9
 ORDER BY zoomlevel

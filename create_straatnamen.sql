@@ -25,7 +25,7 @@ SELECT
 		tunnelnaam,
 		opritjanee,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.straatnamen_hoofdwegen
 UNION
@@ -55,7 +55,7 @@ UNION
 		tunnelnaam,
 		opritjanee,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.straatnamen_lokale_wegen
 
@@ -86,7 +86,7 @@ UNION
 		tunnelnaam,
 		opritjanee,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.straatnamen_overig
 
@@ -117,7 +117,7 @@ UNION
 		tunnelnaam,
 		opritjanee,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.straatnamen_regionale_wegen
 UNION
@@ -147,7 +147,7 @@ UNION
 		tunnelnaam,
 		opritjanee,
 		viscode,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.straatnamen_straat
 ORDER BY zoomlevel

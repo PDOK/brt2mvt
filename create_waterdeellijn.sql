@@ -18,7 +18,7 @@ CREATE TABLE waterdeellijn AS (
 		nederlandse_naam ,
 		friese_naam ,
 		viscode ,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[14] AS zoomlevel 
 	FROM fgdb_brt.waterdeellijn_8
 UNION
@@ -41,7 +41,7 @@ UNION
 		nederlandse_naam ,
 		friese_naam ,
 		viscode  ,
-		ST_Transform(shape, 3857) AS geom ,
+		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
 		ARRAY[15,16,17,18,19] AS zoomlevel 
 	FROM fgdb_brt.waterdeellijn_9_14
 ORDER BY zoomlevel
