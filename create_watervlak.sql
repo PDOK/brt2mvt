@@ -17,9 +17,6 @@ CREATE TABLE waterdeelvlak AS (
 		fysiek_voorkomen ,
 		nederlandse_naam ,
 		friese_naam ,
-		top50visualisatie ,
-		top100visualisatie ,
-		top25visualisatie ,
 		viscode ,
 		ST_Transform(shape, 3857) AS geom ,
 		ARRAY[0,1,2,3,4,5,6] AS zoomlevel 
@@ -43,9 +40,6 @@ UNION
 		fysiek_voorkomen ,
 		nederlandse_naam ,
 		friese_naam ,
-		top50visualisatie ,
-		top100visualisatie ,
-		top25visualisatie ,
 		viscode  ,
 		ST_Transform(shape, 3857) AS geom ,
 		ARRAY[7,8] AS zoomlevel 
@@ -69,9 +63,6 @@ UNION
 		fysiek_voorkomen ,
 		nederlandse_naam ,
 		friese_naam ,
-		top50visualisatie ,
-		top100visualisatie ,
-		top25visualisatie ,
 		viscode  ,
 		ST_Transform(shape, 3857) AS geom ,
 		ARRAY[9,10,11,12,13] AS zoomlevel 
@@ -95,9 +86,6 @@ UNION
 		fysiek_voorkomen ,
 		nederlandse_naam ,
 		friese_naam ,
-		top50visualisatie ,
-		top100visualisatie ,
-		top25visualisatie ,
 		viscode  ,
 		ST_Transform(shape, 3857) AS geom ,
 		ARRAY[14] AS zoomlevel 
@@ -121,9 +109,6 @@ UNION
 		fysiek_voorkomen ,
 		nederlandse_naam ,
 		friese_naam ,
-		top50visualisatie ,
-		top100visualisatie ,
-		top25visualisatie ,
 		viscode  ,
 		ST_Transform(shape, 3857) AS geom ,
 		ARRAY[15,16,17,18,19] AS zoomlevel 
