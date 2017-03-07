@@ -10,7 +10,7 @@ CREATE TABLE inrichtingselementlijn AS (
 		nummer,
 		viscode,
 		ST_Transform(shape, 3857) AS geom ,
-		ARRAY[14] AS zoomlevel 
+		ARRAY[14,15,16] AS zoomlevel 
 	FROM fgdb_brt.inrichtingselementlijn_8
 UNION
 	SELECT 
