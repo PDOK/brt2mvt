@@ -26,5 +26,15 @@ Generate tiles for cache:
 
 	t_rex generate --config config.cfg
 
+With Cargo
 
-cargo run -- serve --config config.cfg 
+	cargo run -- serve --config config.cfg 
+
+To unzip and rename to pbf again:
+
+	gzip -d -r -S .pbf *
+	find . -type f -exec mv '{}' '{}'.pbf \;
+
+Making mbtiles fom the cache
+
+	mb-util --image_format=pbf tmp/terreinvlak_3 terreinvlak_3.mbtiles
