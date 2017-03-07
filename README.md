@@ -60,7 +60,7 @@ Connect to a Postgres server using the standard URI format:
 
 Generate a configuration template:
 
-	t_rex genconfig --dbconn postgresql://user:pass@host:port/database > config.cfg
+	t_rex genconfig --clip true --simplify false --dbconn postgresql://user:pass@host:port/database > config.cfg
 
 Run server with configuration file:
 
