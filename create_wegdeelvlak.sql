@@ -23,9 +23,6 @@ CREATE TABLE wegdeelvlak AS(
 		knooppuntnaam,
 		brugnaam,
 		tunnelnaam,
-		NULL AS top50visualisatie,
-		NULL AS top100visualisatie,
-		NULL AS top25visualisatie,
 		viscode ,
 		ST_Transform(shape, 3857) AS geom ,
 		ARRAY[16,17,18,19] AS zoomlevel 
@@ -55,9 +52,6 @@ UNION
 		knooppuntnaam,
 		brugnaam,
 		tunnelnaam,
-		top50visualisatie,
-		top100visualisatie,
-		top25visualisatie,
 		viscode ,
 		ST_Transform(shape, 3857) AS geom ,
 		ARRAY[13,14,15] AS zoomlevel 
