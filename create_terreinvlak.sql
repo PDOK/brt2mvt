@@ -88,7 +88,7 @@ t.friese_naam,
 t.bebouwingspercentage,
 t.viscode,
 t.shape,
-ARRAY[16] AS zoomlevel FROM terreinvlak_10_14 t
+ARRAY[16,17,18,19,20] AS zoomlevel FROM terreinvlak_10_14 t
 ORDER BY zoomlevel
 );
 
