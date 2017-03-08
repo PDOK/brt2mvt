@@ -1,0 +1,15 @@
+CREATE INDEX gin_annotaties                      ON public.annotaties                     USING gin (zoomlevel);
+CREATE INDEX gin_gebouwpunt                      ON public.gebouwpunt                     USING gin (zoomlevel);
+CREATE INDEX gin_gebouwvlak                      ON public.gebouwvlak                     USING gin (zoomlevel);
+CREATE INDEX gin_inrichtingselementlijn          ON public.inrichtingselementlijn         USING gin (zoomlevel);
+CREATE INDEX gin_inrichtingselementpunt          ON public.inrichtingselementpunt         USING gin (zoomlevel);
+CREATE INDEX gin_plaatsnamen                     ON public.plaatsnamen                    USING gin (zoomlevel);
+CREATE INDEX gin_registratiefgebiedlijn          ON public.registratiefgebiedlijn         USING gin (zoomlevel);
+CREATE INDEX gin_registratiefgebiedvlak          ON public.registratiefgebiedvlak         USING gin (zoomlevel);
+CREATE INDEX gin_spoorbaanlijn                   ON public.spoorbaanlijn                  USING gin (zoomlevel);
+CREATE INDEX gin_straatnamen                     ON public.straatnamen                    USING gin (zoomlevel);
+CREATE INDEX gin_terreinvlak                     ON public.terreinvlak                    USING gin (zoomlevel);
+CREATE INDEX gin_waterdeellijn                   ON public.waterdeellijn                  USING gin (zoomlevel);
+CREATE INDEX gin_waterdeelvlak                   ON public.waterdeelvlak                  USING gin (zoomlevel);
+CREATE INDEX gin_wegdeellijn                     ON public.wegdeellijn                    USING gin (zoomlevel);
+CREATE INDEX gin_wegdeelvlak                     ON public.wegdeelvlak                    USING gin (zoomlevel);
