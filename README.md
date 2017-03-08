@@ -91,3 +91,25 @@ To unzip and rename to pbf again:
 Making mbtiles fom the cache
 
 	mb-util --image_format=pbf tmp/terreinvlak_3 terreinvlak_3.mbtiles
+
+# Waar is Nederland!?
+
+	8/131/84
+
+## Volgorde lagen
+
+1. Registratiefgebiedvlak
+2. Terreinvlak
+3. Waterdeelvlak
+4. Waterdeellijn
+5. Registratiefgebiedlijn
+6. Wegdeellijn
+7. wegdeelvlak
+8. Gebouwvlak (gebouwpunt)
+9. Spoorbaanlijn
+10. inrichtingselementlijn ( inrichtingselementpunt)
+11. Straatnamen
+12. annotaties
+13. plaatsnamen
+
+gebouwpunt en inrichtingselement punt komen niet voor in de aangeleverde lijst van de brta.
