@@ -16,7 +16,7 @@ Get postgis docker form `ojajoh/docker-postgis`
     export PGUSER=myown_username
     export PGPASSWORD=myown_password
 
-Run the docker with volume mounted on host. In the data_dir put the fgdb 
+Run the docker with volume mounted on host. In the data_dir put the fgdb
 
 	docker run -v /home/path/data_dir:/data_dir --name $PGDATABASE -e POSTGRES_DB=$PGDATABASE -e POSTGRES_USER=$PGUSER -e POSTGRES_PASSWORD=$PGPASSWORD -p $PGPORT:5432 -d ojajoh/docker-postgis
 
@@ -30,16 +30,19 @@ Create Foreign Data Tables form the `fgdb`:
 		FOREIGN DATA WRAPPER ogr_fdw
 		OPTIONS (
 		datasource '/data_dir/BRTAGBasis.gdb',
-		format 'OpenFileGDB' ); 
+		format 'OpenFileGDB' );
 
 	CREATE SCHEMA fgdb_BRT;
 
-	IMPORT FOREIGN SCHEMA ogr_all 
-	    FROM SERVER fgdb_BRTAG 
+	IMPORT FOREIGN SCHEMA ogr_all
+	    FROM SERVER fgdb_BRTAG
 	    INTO fgdb_BRT;
 
 Now run the sql files to import all tables with the right settings and projection to `SCHEMA public`.
 
+### Function Z for calculating zoomlevels
+
+In order to calculate the zoomlevels based on the scale denominator, we the function `z`. Create this function with the file `create_function_z.sql`
 
 ## T-rex
 From https://github.com/pka/t-rex
@@ -76,7 +79,7 @@ Build with Cargo to get the latest version.
 
 With Cargo
 
-	cargo run -- serve --config config.cfg 
+	cargo run -- serve --config config.cfg
 
 ### Unzipping .pbf tiles
 To unzip and rename to pbf again:
@@ -88,4 +91,3 @@ To unzip and rename to pbf again:
 Making mbtiles fom the cache
 
 	mb-util --image_format=pbf tmp/terreinvlak_3 terreinvlak_3.mbtiles
-
