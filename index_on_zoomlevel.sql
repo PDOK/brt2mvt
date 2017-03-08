@@ -13,3 +13,36 @@ CREATE INDEX gin_waterdeellijn                   ON public.waterdeellijn        
 CREATE INDEX gin_waterdeelvlak                   ON public.waterdeelvlak                  USING gin (zoomlevel);
 CREATE INDEX gin_wegdeellijn                     ON public.wegdeellijn                    USING gin (zoomlevel);
 CREATE INDEX gin_wegdeelvlak                     ON public.wegdeelvlak                    USING gin (zoomlevel);
+
+
+VACUUM ANALYZE public.annotaties              ;
+VACUUM ANALYZE public.gebouwpunt              ;
+VACUUM ANALYZE public.gebouwvlak              ;
+VACUUM ANALYZE public.inrichtingselementlijn  ;
+VACUUM ANALYZE public.inrichtingselementpunt  ;
+VACUUM ANALYZE public.plaatsnamen             ;
+VACUUM ANALYZE public.registratiefgebiedlijn  ;
+VACUUM ANALYZE public.registratiefgebiedvlak  ;
+VACUUM ANALYZE public.spoorbaanlijn           ;
+VACUUM ANALYZE public.straatnamen             ;
+VACUUM ANALYZE public.terreinvlak             ;
+VACUUM ANALYZE public.waterdeellijn           ;
+VACUUM ANALYZE public.waterdeelvlak           ;
+VACUUM ANALYZE public.wegdeellijn             ;
+VACUUM ANALYZE public.wegdeelvlak             ;
+
+ANALYZE public.annotaties              ;
+ANALYZE public.gebouwpunt              ;
+ANALYZE public.gebouwvlak              ;
+ANALYZE public.inrichtingselementlijn  ;
+ANALYZE public.inrichtingselementpunt  ;
+ANALYZE public.plaatsnamen             ;
+ANALYZE public.registratiefgebiedlijn  ;
+ANALYZE public.registratiefgebiedvlak  ;
+ANALYZE public.spoorbaanlijn           ;
+ANALYZE public.straatnamen             ;
+ANALYZE public.terreinvlak             ;
+ANALYZE public.waterdeellijn           ;
+ANALYZE public.waterdeelvlak           ;
+ANALYZE public.wegdeellijn             ;
+ANALYZE public.wegdeelvlak             ;
