@@ -25,10 +25,10 @@ CREATE TABLE wegdeellijn AS(
 		tunnelnaam,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[16,17,18,19] AS zoomlevel 
+		ARRAY[16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.wegdeellijn_10_14
 UNION
-	SELECT 
+	SELECT
 		NULL AS top10_id,
 		NULL AS type_infrastructuur,
 		type_weg,
@@ -54,10 +54,10 @@ UNION
 		tunnelnaam,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[14,15] AS zoomlevel 
-	FROM fgdb_brt.wegdeellijn_8_9 
+		ARRAY[14,15,16,17,18,19] AS zoomlevel
+	FROM fgdb_brt.wegdeellijn_8_9
 UNION
-	SELECT 
+	SELECT
 		NULL AS top10_id,
 		NULL AS type_infrastructuur,
 		type_weg,
@@ -83,10 +83,10 @@ UNION
 		tunnelnaam,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[13] AS zoomlevel 
+		ARRAY[12,13] AS zoomlevel
 	FROM fgdb_brt.wegdeellijn_7
 UNION
-	SELECT 
+	SELECT
 		NULL AS top10_id,
 		NULL AS type_infrastructuur,
 		type_weg,
@@ -112,36 +112,7 @@ UNION
 		tunnelnaam,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[12] AS zoomlevel 
-	FROM fgdb_brt.wegdeellijn_6
-UNION
-	SELECT 
-		NULL AS top10_id,
-		NULL AS type_infrastructuur,
-		type_weg,
-		hoofdverkeersgebruik,
-		gescheiden_rijbaan,
-		verhardingstype,
-		status,
-		hoogteniveau,
-		NULL AS verhardingsbreedteklasse,
-		NULL AS verhardingsbreedte,
-		aantal_rijstroken,
-		fysiek_voorkomen,
-		nederlandse_straatnaam,
-		friese_straatnaam,
-		wegnummer_a_weg,
-		wegnummer_n_weg,
-		NULL AS wegnummer_e_weg,
-		NULL AS wegnummer_s_weg,
-		NULL AS afritnummer,
-		NULL AS afritnaam,
-		NULL AS knooppuntnaam,
-		brugnaam,
-		tunnelnaam,
-		viscode ,
-		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[6,7,8,9,10,11] AS zoomlevel 
+		ARRAY[6,7,8,9,10,11] AS zoomlevel
 	FROM fgdb_brt.wegdeellijn_2_5
 ORDER BY zoomlevel
 );
@@ -149,4 +120,3 @@ ORDER BY zoomlevel
 ALTER TABLE wegdeellijn ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  wegdeellijn_gix ON public.wegdeellijn USING gist (geom);
 CLUSTER wegdeellijn USING wegdeellijn_gix;
-
