@@ -1,5 +1,5 @@
 CREATE TABLE plaatsnamen AS (
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -12,10 +12,10 @@ CREATE TABLE plaatsnamen AS (
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[5] AS zoomlevel 
+		ARRAY[5] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_0
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -28,10 +28,10 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[6] AS zoomlevel 
+		ARRAY[6] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_1
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -44,10 +44,10 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[7] AS zoomlevel 
+		ARRAY[7] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_2
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -60,10 +60,10 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[8] AS zoomlevel 
+		ARRAY[8] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_3
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -76,10 +76,10 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[9,10] AS zoomlevel 
+		ARRAY[9,10] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_4
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -92,10 +92,10 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[11] AS zoomlevel 
+		ARRAY[11] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_5
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -108,10 +108,10 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[12] AS zoomlevel 
+		ARRAY[12] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_6
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -124,10 +124,10 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[13] AS zoomlevel 
+		ARRAY[13] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_7
 UNION
-	SELECT 
+	SELECT
 		typegebied,
 		bebouwdekom,
 		isbagwoonplaats,
@@ -140,7 +140,7 @@ UNION
 		naam ,
 		inwkl,
 		ST_Transform(shape, 3857)::geometry(POINT, 3857) AS geom ,
-		ARRAY[14] AS zoomlevel 
+		ARRAY[14] AS zoomlevel
 	FROM fgdb_brt.plaatsnamen_8
 ORDER BY zoomlevel
 );
@@ -148,3 +148,4 @@ ORDER BY zoomlevel
 ALTER TABLE plaatsnamen ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  plaatsnamen_gix ON public.plaatsnamen USING gist (geom);
 CLUSTER plaatsnamen USING plaatsnamen_gix;
+CREATE INDEX gin_plaatsnamen ON public.plaatsnamen USING gin (zoomlevel);

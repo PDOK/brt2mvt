@@ -1,5 +1,5 @@
 CREATE TABLE wegdeelvlak AS(
-	SELECT 
+	SELECT
 		NULL AS top10_id,
 		NULL AS type_infrastructuur,
 		type_weg,
@@ -25,10 +25,10 @@ CREATE TABLE wegdeelvlak AS(
 		tunnelnaam,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
-		ARRAY[16,17,18,19] AS zoomlevel 
-	FROM fgdb_brt.wegdeelvlak_10_14 
+		ARRAY[16,17,18,19] AS zoomlevel
+	FROM fgdb_brt.wegdeelvlak_10_14
 UNION
-	SELECT 
+	SELECT
 		top10_id,
 		type_infrastructuur,
 		type_weg,
@@ -54,7 +54,7 @@ UNION
 		tunnelnaam,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
-		ARRAY[13,14,15] AS zoomlevel 
+		ARRAY[13,14,15] AS zoomlevel
 	FROM fgdb_brt.wegdeelvlak_7_9
 ORDER BY zoomlevel
 );
@@ -62,5 +62,6 @@ ORDER BY zoomlevel
 ALTER TABLE wegdeelvlak ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  wegdeelvlak_gix ON public.wegdeelvlak USING gist (geom);
 CLUSTER wegdeelvlak USING wegdeelvlak_gix;
+CREATE INDEX gin_wegdeelvlak ON public.wegdeelvlak USING gin (zoomlevel);
 
---Wegdeelvlak_10_14 bevat geen top10_id..afritnummers visualizatie codes... 
+--Wegdeelvlak_10_14 bevat geen top10_id..afritnummers visualizatie codes...

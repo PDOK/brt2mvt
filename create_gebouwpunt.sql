@@ -46,4 +46,4 @@ ORDER by zoomlevel
 ALTER TABLE gebouwpunt ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  gebouwpunt_gix ON public.gebouwpunt USING gist (geom);
 CLUSTER gebouwpunt USING gebouwpunt_gix;
-
+CREATE INDEX gin_gebouwpunt ON public.gebouwpunt USING gin (zoomlevel);

@@ -46,3 +46,4 @@ ORDER by zoomlevel
 ALTER TABLE public.gebouwvlak ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  gebouwvlak_gix ON public.gebouwvlak USING gist (geom);
 CLUSTER public.gebouwvlak USING gebouwvlak_gix;
+CREATE INDEX gin_gebouwvlak ON public.gebouwvlak USING gin (zoomlevel);

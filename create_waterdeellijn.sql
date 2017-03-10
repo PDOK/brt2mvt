@@ -1,5 +1,5 @@
 CREATE TABLE waterdeellijn AS (
-	SELECT 
+	SELECT
 		top10_id,
 		type_water ,
 		hoofdafwatering ,
@@ -19,10 +19,10 @@ CREATE TABLE waterdeellijn AS (
 		friese_naam ,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[14] AS zoomlevel 
+		ARRAY[14] AS zoomlevel
 	FROM fgdb_brt.waterdeellijn_8
 UNION
-	SELECT 
+	SELECT
 		top10_id,
 		type_water ,
 		hoofdafwatering ,
@@ -42,7 +42,7 @@ UNION
 		friese_naam ,
 		viscode  ,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[15,16,17,18,19] AS zoomlevel 
+		ARRAY[15,16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.waterdeellijn_9_14
 ORDER BY zoomlevel
 );
@@ -50,3 +50,4 @@ ORDER BY zoomlevel
 ALTER TABLE waterdeellijn ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  waterdeellijn_gix ON public.waterdeellijn USING gist (geom);
 CLUSTER waterdeellijn USING waterdeellijn_gix;
+CREATE INDEX gin_waterdeellijn ON public.waterdeellijn USING gin (zoomlevel);

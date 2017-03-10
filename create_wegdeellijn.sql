@@ -120,3 +120,4 @@ ORDER BY zoomlevel
 ALTER TABLE wegdeellijn ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  wegdeellijn_gix ON public.wegdeellijn USING gist (geom);
 CLUSTER wegdeellijn USING wegdeellijn_gix;
+CREATE INDEX gin_wegdeellijn ON public.wegdeellijn USING gin (zoomlevel);

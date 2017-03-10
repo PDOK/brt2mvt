@@ -1,5 +1,5 @@
 CREATE TABLE spoorbaanlijn AS (
-	SELECT 
+	SELECT
 		type_spoorbaan,
 		spoorbreedte,
 		aantal_sporen,
@@ -10,10 +10,10 @@ CREATE TABLE spoorbaanlijn AS (
 		fysiek_voorkomen,
 		viscode,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[12,13,14] AS zoomlevel 
+		ARRAY[12,13,14] AS zoomlevel
 	FROM fgdb_brt.spoorbaandeellijn_6_8
 UNION
-	SELECT 
+	SELECT
 		type_spoorbaan,
 		spoorbreedte,
 		aantal_sporen,
@@ -24,7 +24,7 @@ UNION
 		fysiek_voorkomen,
 		viscode,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[15,16,17,18,19] AS zoomlevel 
+		ARRAY[15,16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.spoorbaandeellijn_9_14
 ORDER BY zoomlevel
 );
@@ -32,3 +32,4 @@ ORDER BY zoomlevel
 ALTER TABLE spoorbaanlijn ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  spoorbaanlijn_gix ON public.spoorbaanlijn USING gist (geom);
 CLUSTER spoorbaanlijn USING spoorbaanlijn_gix;
+CREATE INDEX gin_spoorbaanlijn ON public.spoorbaanlijn USING gin (zoomlevel);

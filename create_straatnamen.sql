@@ -26,7 +26,7 @@ SELECT
 		opritjanee,
 		viscode,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
+		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.straatnamen_hoofdwegen
 UNION
 	SELECT
@@ -56,7 +56,7 @@ UNION
 		opritjanee,
 		viscode,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
+		ARRAY[14,15,16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.straatnamen_lokale_wegen
 
 UNION
@@ -87,7 +87,7 @@ UNION
 		opritjanee,
 		viscode,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
+		ARRAY[16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.straatnamen_overig
 
 UNION
@@ -118,7 +118,7 @@ UNION
 		opritjanee,
 		viscode,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
+		ARRAY[14,15,16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.straatnamen_regionale_wegen
 UNION
 	SELECT
@@ -148,7 +148,7 @@ UNION
 		opritjanee,
 		viscode,
 		ST_Transform(shape, 3857)::geometry(MULTILINESTRING, 3857) AS geom ,
-		ARRAY[6,7,8,9,10,11,12,13,14,15,16,17,18,19] AS zoomlevel 
+		ARRAY[16,17,18,19] AS zoomlevel
 	FROM fgdb_brt.straatnamen_straat
 ORDER BY zoomlevel
 );
@@ -156,3 +156,4 @@ ORDER BY zoomlevel
 ALTER TABLE straatnamen ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  straatnamen_gix ON public.straatnamen USING gist (geom);
 CLUSTER straatnamen USING straatnamen_gix;
+CREATE INDEX gin_straatnamen ON public.straatnamen USING gin (zoomlevel);

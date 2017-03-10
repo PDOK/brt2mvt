@@ -1,5 +1,5 @@
 CREATE TABLE waterdeelvlak AS (
-	SELECT 
+	SELECT
 		top10_id,
 		type_water ,
 		hoofdafwatering ,
@@ -19,10 +19,10 @@ CREATE TABLE waterdeelvlak AS (
 		friese_naam ,
 		viscode ,
 		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
-		ARRAY[0,1,2,3,4,5,6] AS zoomlevel 
-	FROM fgdb_brt.waterdeelvlak_0_1 
+		ARRAY[6] AS zoomlevel
+	FROM fgdb_brt.waterdeelvlak_0_1
 UNION
-	SELECT 
+	SELECT
 		top10_id,
 		type_water ,
 		hoofdafwatering ,
@@ -42,10 +42,10 @@ UNION
 		friese_naam ,
 		viscode  ,
 		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
-		ARRAY[7,8] AS zoomlevel 
-	FROM fgdb_brt.waterdeelvlak_2_3 
+		ARRAY[7,8] AS zoomlevel
+	FROM fgdb_brt.waterdeelvlak_2_3
 UNION
-	SELECT 
+	SELECT
 		top10_id,
 		type_water ,
 		hoofdafwatering ,
@@ -65,10 +65,10 @@ UNION
 		friese_naam ,
 		viscode  ,
 		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
-		ARRAY[9,10,11,12,13] AS zoomlevel 
-	FROM fgdb_brt.waterdeelvlak_4_7 
+		ARRAY[9,10,11,12,13] AS zoomlevel
+	FROM fgdb_brt.waterdeelvlak_4_7
 UNION
-	SELECT 
+	SELECT
 		top10_id,
 		type_water ,
 		hoofdafwatering ,
@@ -88,10 +88,10 @@ UNION
 		friese_naam ,
 		viscode  ,
 		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
-		ARRAY[14] AS zoomlevel 
+		ARRAY[14] AS zoomlevel
 	FROM fgdb_brt.waterdeelvlak_8
 UNION
-	SELECT 
+	SELECT
 		top10_id,
 		type_water ,
 		hoofdafwatering ,
@@ -111,11 +111,12 @@ UNION
 		friese_naam ,
 		viscode  ,
 		ST_Transform(shape, 3857)::geometry(MULTIPOLYGON, 3857) AS geom ,
-		ARRAY[15,16,17,18,19] AS zoomlevel 
-	FROM fgdb_brt.waterdeelvlak_9_14 
+		ARRAY[15,16,17,18,19] AS zoomlevel
+	FROM fgdb_brt.waterdeelvlak_9_14
 ORDER BY zoomlevel
 );
 
 ALTER TABLE waterdeelvlak ADD COLUMN fid SERIAL PRIMARY KEY;
 CREATE INDEX  waterdeelvlak_gix ON public.waterdeelvlak USING gist (geom);
 CLUSTER waterdeelvlak USING waterdeelvlak_gix;
+CREATE INDEX gin_waterdeelvlak ON public.waterdeelvlak USING gin (zoomlevel);
