@@ -55,6 +55,20 @@ To install on Linux:
 	sudo dpkg -i t-rex-v0.6.1-x86_64-unknown-linux-gnu.deb
 	sudo apt-get install -f.
 
+## Tilemantle
+
+https://github.com/naturalatlas/tilemantle
+
+Tilemantle is a cache warmer. Because t-rex has a bug regarding generating tiles with an extent, this can be used as a workaround.
+
+Cache the Netherlands up to zoomlevel 14
+
+`tilemantle http://localhost:6767/brt_achtergrond/{z}/{x}/{y}.pbf --method=GET --zoom=0-14 -f nl_grof.geojson -c 4`
+
+Cache a speficic region at deeper zoomlevels (e.g. city of Apeldoorn)
+
+`tilemantle http://localhost:6767/brt_achtergrond/{z}/{x}/{y}.pbf --point=52.21,5.97 --buffer=7km --method=GET --zoom=15-18 -c 4`
+
 ## Connecting
 Connect to a Postgres server using the standard URI format:
 
